@@ -13,12 +13,12 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
 ## Table of content
 
 * [Default Variables](#default-variables)
+  * [elastiflow_configs](#elastiflow_configs)
+  * [elastiflow_download](#elastiflow_download)
   * [elastiflow_elasticsearch_hosts](#elastiflow_elasticsearch_hosts)
   * [elastiflow_elasticsearch_password](#elastiflow_elasticsearch_password)
   * [elastiflow_elasticsearch_username](#elastiflow_elasticsearch_username)
-  * [elastiflow_repository](#elastiflow_repository)
   * [elastiflow_version](#elastiflow_version)
-  * [logstash_repository](#logstash_repository)
 * [Dependencies](#dependencies)
 * [License](#license)
 * [Author](#author)
@@ -27,7 +27,36 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
 
 ## Default Variables
 
+### elastiflow_configs
+
+List of configs to enable or disable
+
+#### Default value
+
+```YAML
+elastiflow_configs:
+  - name: 30_output_10_single
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length < 2 else 'disable'\
+      \ }}"
+  - name: 30_output_20_multi
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length > 1 else 'disable'\
+      \ }}"
+```
+
+### elastiflow_download
+
+URL to fetch the elastiflow source from
+
+#### Default value
+
+```YAML
+elastiflow_download: https://github.com/robcowart/elastiflow/archive/v{{ elastiflow_version
+  }}.tar.gz
+```
+
 ### elastiflow_elasticsearch_hosts
+
+List of elasticsearch hosts to write into
 
 #### Default value
 
@@ -37,6 +66,8 @@ elastiflow_elasticsearch_hosts: []
 
 ### elastiflow_elasticsearch_password
 
+Optional password for elastisearch authentication
+
 #### Default value
 
 ```YAML
@@ -45,33 +76,23 @@ elastiflow_elasticsearch_password:
 
 ### elastiflow_elasticsearch_username
 
+Optional username for elasticsearch authentication
+
 #### Default value
 
 ```YAML
 elastiflow_elasticsearch_username:
 ```
 
-### elastiflow_repository
-
-Repository to clone Elastiflow from
-
-#### Default value
-
-```YAML
-elastiflow_repository: https://github.com/robcowart/elastiflow.git
-```
-
 ### elastiflow_version
 
+Version of the archive to download
+
 #### Default value
 
 ```YAML
-elastiflow_version: v3.5.3
+elastiflow_version: 3.5.3
 ```
-
-### logstash_repository
-
-List of elasticsearch hosts to write into
 
 ## Dependencies
 

@@ -1,4 +1,4 @@
-# Standards: 1.2
+# Standards: 0.1
 ---
 - name: Create required dirs
   loop:
@@ -9,14 +9,70 @@
   tags:
     - elastiflow
 
-- name: Clone source repo
+- name: Fetch source archive
+  unarchive:
+    src: "{{ elastiflow_download }}"
+    dest: /usr/share
+    remote_src: True
+    owner: root
+    group: root
+    creates: "/usr/share/elastiflow-{{ elastiflow_version }}"
+  tags:
+    - elastiflow
+
+- name: Find enabled configs
+  register: elastiflow_enabled_configs_find
+  find:
+    paths: "/usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d"
+    patterns: "*.conf"
+  tags:
+    - elastiflow
+
+- name: Fact enabled configs
+  set_fact:
+    elastiflow_enabled_configs: "{{ elastiflow_enabled_configs_find.files | map(attribute='path') | map('basename') | map('regex_replace', '^([a-zA-Z0-9_-]+).*', '\\1') }}"
+  tags:
+    - elastiflow
+
+- name: Find disabled configs
+  register: elastiflow_disabled_configs_find
+  find:
+    paths: "/usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d"
+    patterns: "*.disabled"
+  tags:
+    - elastiflow
+
+- name: Fact disabled configs
+  set_fact:
+    elastiflow_disabled_configs: "{{ elastiflow_disabled_configs_find.files | map(attribute='path') | map('basename') | map('regex_replace', '^([a-zA-Z0-9_-]+).*', '\\1') }}"
+  tags:
+    - elastiflow
+
+- name: Enable defined configs
   notify:
     - Restart logstash
-  git:
-    repo: "{{ elastiflow_repository }}"
-    dest: /usr/share/elastiflow
-    version: "{{ elastiflow_version }}"
-    depth: 1
+  loop: "{{ elastiflow_configs }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.name in elastiflow_disabled_configs and item.state | default('enable') == 'enable'
+  command:
+    cmd: "mv {{ item.name }}.logstash.conf.disabled {{ item.name }}.logstash.conf"
+    chdir: "/usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d"
+    creates: /usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d/{{ item.name }}.logstash.conf
+  tags:
+    - elastiflow
+
+- name: Disable defined configs
+  notify:
+    - Restart logstash
+  loop: "{{ elastiflow_configs }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.name in elastiflow_enabled_configs and item.state | default('enable') == 'disable'
+  command:
+    cmd: "mv {{ item.name }}.logstash.conf {{ item.name }}.logstash.conf.disabled"
+    chdir: "/usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d"
+    creates: /usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow/conf.d/{{ item.name }}.logstash.conf.disabled
   tags:
     - elastiflow
 
@@ -24,7 +80,7 @@
   notify:
     - Restart logstash
   file:
-    src: /usr/share/elastiflow/logstash/elastiflow
+    src: "/usr/share/elastiflow-{{ elastiflow_version }}/logstash/elastiflow"
     dest: /etc/logstash/elastiflow
     state: link
   tags:

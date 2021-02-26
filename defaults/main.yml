@@ -1,18 +1,25 @@
-# Standards: 1.2
+# Standards: 0.1
 ---
-# @var elastiflow_repository:description: Repository to clone Elastiflow from
-elastiflow_repository: https://github.com/robcowart/elastiflow.git
+# @var elastiflow_version:description: Version of the archive to download
+elastiflow_version: 3.5.3
 
-# @var logstash_repository:description: Version/Tag of the repository to use
-elastiflow_version: v3.5.3
+# @var elastiflow_download:description: URL to fetch the elastiflow source from
+elastiflow_download: https://github.com/robcowart/elastiflow/archive/v{{ elastiflow_version }}.tar.gz
 
-# @var logstash_repository:description: Optional username for elasticsearch authentication
+# @var elastiflow_configs:description: List of configs to enable or disable
+elastiflow_configs:
+  - name: 30_output_10_single
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length < 2 else 'disable' }}"
+  - name: 30_output_20_multi
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length > 1 else 'disable' }}"
+
+# @var elastiflow_elasticsearch_username:description: Optional username for elasticsearch authentication
 elastiflow_elasticsearch_username:
 
-# @var logstash_repository:description: Optional password for elastisearch authentication
+# @var elastiflow_elasticsearch_password:description: Optional password for elastisearch authentication
 elastiflow_elasticsearch_password:
 
-# @var logstash_repository:description: List of elasticsearch hosts to write into
+# @var elastiflow_elasticsearch_hosts:description: List of elasticsearch hosts to write into
 elastiflow_elasticsearch_hosts: []
 
 ...
