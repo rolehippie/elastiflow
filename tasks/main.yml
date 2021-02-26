@@ -1,0 +1,57 @@
+# Standards: 0.1
+---
+- name: Create required dirs
+  loop:
+    - /etc/systemd/system/logstash.service.d
+  file:
+    path: "{{ item }}"
+    state: directory
+  tags:
+    - elastiflow
+
+- name: Clone source repo
+  notify:
+    - Restart logstash
+  git:
+    repo: "{{ elastiflow_repository }}"
+    dest: /usr/share/elastiflow
+    version: "{{ elastiflow_version }}"
+    depth: 1
+  tags:
+    - elastiflow
+
+- name: Symlink logstash config
+  notify:
+    - Restart logstash
+  file:
+    src: /usr/share/elastiflow/logstash/elastiflow
+    dest: /etc/logstash/elastiflow
+    state: link
+  tags:
+    - elastiflow
+
+- name: Write service override
+  notify:
+    - Restart logstash
+  template:
+    src: override.j2
+    dest: /etc/systemd/system/logstash.service.d/elastiflow.conf
+    owner: root
+    group: root
+    mode: u=rw,g=rw,o=
+  tags:
+    - elastiflow
+
+- name: Write profile variables
+  notify:
+    - Restart logstash
+  template:
+    src: profile.j2
+    dest: /etc/profile.d/elastiflow.sh
+    owner: root
+    group: root
+    mode: u=rwx,g=rwx,o=rx
+  tags:
+    - elastiflow
+
+...

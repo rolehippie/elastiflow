@@ -1,0 +1,18 @@
+# Standards: 0.1
+---
+# @var elastiflow_repository:description: Repository to clone Elastiflow from
+elastiflow_repository: https://github.com/robcowart/elastiflow.git
+
+# @var logstash_repository:description: Version/Tag of the repository to use
+elastiflow_version: v3.5.3
+
+# @var logstash_repository:description: Optional username for elasticsearch authentication
+elastiflow_elasticsearch_username:
+
+# @var logstash_repository:description: Optional password for elastisearch authentication
+elastiflow_elasticsearch_password:
+
+# @var logstash_repository:description: List of elasticsearch hosts to write into
+elastiflow_elasticsearch_hosts: []
+
+...
