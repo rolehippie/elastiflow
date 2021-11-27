@@ -50,8 +50,8 @@ URL to fetch the elastiflow source from
 #### Default value
 
 ```YAML
-elastiflow_download: https://github.com/robcowart/elastiflow/archive/v{{ elastiflow_version
-  }}.tar.gz
+elastiflow_download: https://github.com/robcowart/elastiflow/archive/refs/tags/v{{
+  elastiflow_version }}.tar.gz
 ```
 
 ### elastiflow_elasticsearch_hosts

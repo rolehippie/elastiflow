@@ -1,10 +1,11 @@
 # Standards: 1.2
 ---
 # @var elastiflow_version:description: Version of the archive to download
+# renovate: datasource=github-releases depName=robcowart/elastiflow
 elastiflow_version: 3.5.3
 
 # @var elastiflow_download:description: URL to fetch the elastiflow source from
-elastiflow_download: https://github.com/robcowart/elastiflow/archive/v{{ elastiflow_version }}.tar.gz
+elastiflow_download: "https://github.com/robcowart/elastiflow/archive/refs/tags/v{{ elastiflow_version }}.tar.gz"
 
 # @var elastiflow_configs:description: List of configs to enable or disable
 elastiflow_configs:
