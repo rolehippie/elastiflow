@@ -5,6 +5,9 @@
     - /etc/systemd/system/logstash.service.d
   file:
     path: "{{ item }}"
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
     state: directory
   tags:
     - elastiflow
