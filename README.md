@@ -1,27 +1,28 @@
 # elastiflow
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/elastiflow) [![Testing Build](https://github.com/rolehippie/elastiflow/workflows/testing/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/elastiflow/workflows/readme/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/elastiflow/workflows/galaxy/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/elastiflow)](https://github.com/rolehippie/elastiflow/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/elastiflow) [![Testing Build](https://github.com/rolehippie/elastiflow/workflows/testing/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/elastiflow/workflows/readme/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/elastiflow/workflows/galaxy/badge.svg)](https://github.com/rolehippie/elastiflow/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/elastiflow)](https://github.com/rolehippie/elastiflow/blob/master/LICENSE)
 
-Ansible role to install and configure Elastiflow netflow processing. 
+Ansible role to install and configure Elastiflow netflow processing.
 
-## Sponsor 
+## Sponsor
 
-[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu) 
+[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
 
 Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
 
 ## Table of content
 
-* [Default Variables](#default-variables)
-  * [elastiflow_configs](#elastiflow_configs)
-  * [elastiflow_download](#elastiflow_download)
-  * [elastiflow_elasticsearch_hosts](#elastiflow_elasticsearch_hosts)
-  * [elastiflow_elasticsearch_password](#elastiflow_elasticsearch_password)
-  * [elastiflow_elasticsearch_username](#elastiflow_elasticsearch_username)
-  * [elastiflow_version](#elastiflow_version)
-* [Dependencies](#dependencies)
-* [License](#license)
-* [Author](#author)
+- [Default Variables](#default-variables)
+  - [elastiflow_configs](#elastiflow_configs)
+  - [elastiflow_download](#elastiflow_download)
+  - [elastiflow_elasticsearch_hosts](#elastiflow_elasticsearch_hosts)
+  - [elastiflow_elasticsearch_password](#elastiflow_elasticsearch_password)
+  - [elastiflow_elasticsearch_username](#elastiflow_elasticsearch_username)
+  - [elastiflow_version](#elastiflow_version)
+- [Discovered Tags](#discovered-tags)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -94,9 +95,14 @@ Version of the archive to download
 elastiflow_version: 3.5.3
 ```
 
+## Discovered Tags
+
+**_elastiflow_**
+
+
 ## Dependencies
 
-* None
+- None
 
 ## License
 
