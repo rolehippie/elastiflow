@@ -2,7 +2,7 @@
 ---
 # @var elastiflow_version:description: Version of the archive to download
 # renovate: datasource=github-releases depName=robcowart/elastiflow
-elastiflow_version: 3.5.3
+elastiflow_version: 4.0.1
 
 # @var elastiflow_download:description: URL to fetch the elastiflow source from
 elastiflow_download: "https://github.com/robcowart/elastiflow/archive/refs/tags/v{{ elastiflow_version }}.tar.gz"
