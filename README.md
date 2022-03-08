@@ -92,7 +92,7 @@ Version of the archive to download
 #### Default value
 
 ```YAML
-elastiflow_version: 3.5.3
+elastiflow_version: 4.0.1
 ```
 
 ## Discovered Tags
