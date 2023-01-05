@@ -2,6 +2,9 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    elastiflow_elasticsearch_hosts:
+      - localhost
   roles:
     - role: rolehippie.logstash
     - role: rolehippie.elastiflow
