@@ -1,0 +1,9 @@
+# Standards: 1.2
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: rolehippie.logstash
+    - role: rolehippie.elastiflow
+
+...
