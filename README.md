@@ -1,6 +1,11 @@
 # elastiflow
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/elastiflow) [![General Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml) [![Readme Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/readme.yml) [![Galaxy Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/elastiflow)](https://github.com/rolehippie/elastiflow/blob/master/LICENSE) [![Ansible Role](https://img.shields.io/ansible/role/55294)](https://galaxy.ansible.com/rolehippie/elastiflow)
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/elastiflow)
+[![General Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml)
+[![Readme Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/readme.yml)
+[![Galaxy Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml)
+[![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/elastiflow)](https://github.com/rolehippie/elastiflow/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/badge/role-rolehippie.elastiflow-blue)](https://galaxy.ansible.com/rolehippie/elastiflow)
 
 Ansible role to install and configure Elastiflow netflow processing.
 
