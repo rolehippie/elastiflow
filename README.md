@@ -1,6 +1,6 @@
 # elastiflow
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/elastiflow)
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/elastiflow)
 [![General Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/general.yml)
 [![Readme Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/docs.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/docs.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/elastiflow/actions/workflows/galaxy.yml)
@@ -34,7 +34,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - Minimum Ansible version: `2.10`
 
-
 ## Default Variables
 
 ### elastiflow_configs
@@ -46,11 +45,11 @@ List of configs to enable or disable
 ```YAML
 elastiflow_configs:
   - name: 30_output_10_single
-    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length < 2 else 'disable'\
-      \ }}"
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length < 2 else 'disable'
+      }}"
   - name: 30_output_20_multi
-    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length > 1 else 'disable'\
-      \ }}"
+    state: "{{ 'enable' if elastiflow_elasticsearch_hosts | length > 1 else 'disable'
+      }}"
 ```
 
 ### elastiflow_download
